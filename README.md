@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/language.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/language.png)
   
 # Instalación de Spark en GNU/Linux Debian
 ## Introduction
@@ -84,7 +84,7 @@ nano .profile
 ```
 Cuando carge profile, nos posecionamos al final del archivo:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/export_paths.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/export_paths.png)
 
 Entonces, agregamos las siguientes tres líneas:
 
@@ -120,7 +120,7 @@ http://127.0.0.1:8080/
 
 La página muestra tu **URL Spark**, la información para el status de trabajadores (workers), recursos del hardware utilizados, etc.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/url.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/url.png)
 
 La URL para el Maestro Spark es el nombre de tu dispositivo sobre el puerto 8080. Para mi caso es _**debian.gabi:8080**_. Así es que, aquí tenemos tres caminos posibles para cargar la Web UI Spark Master:
 
@@ -148,7 +148,7 @@ start-slave.sh spark://debian.gabi:7077
 
 Ahora que el trabajador o esclavo esta cargado y corriendo, si recargamos la Spark Master's Web UI, deberás de verlo en la lista:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/slave.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/slave.png)
 
 ### Especificar la asignación de recursos para los trabajadores
 
@@ -160,7 +160,7 @@ start-slave.sh -c 1 spark://debian.gabi:7077
 
 Recargamos el Spark Master's Web UI para confirmar la configuración del trabajador.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/core.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/core.png)
 
 De manera similar podemos asignar la cantidad especifica de memoria cuando inicializamos al trabajador. La configuración por defecto es la cantidad de memoria RAM usada por la máquina menos 1GB.
 
@@ -174,7 +174,7 @@ start-slave.sh -m 512MB spark://debian.gabi:7077
 
 Recarga el Spark Master's Web UI para visualizar el status del trabajador y confirmar la configuración 
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/memory.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/memory.png)
 
 ## Probar Spark Shell
 
@@ -190,7 +190,7 @@ Deberás obtener una notificación en pantalla y la descripción de Spark. Por d
 
 Al finalizar la salida lucira la imagen con la versión que use al momento de escribir esta guia:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/spark_shell.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/spark_shell.png)
 
 ## Probando Python en Spark
 
@@ -204,7 +204,7 @@ pyspark
 
 La salida resultante luce similar a la anterior. En la parte inferior observarás la versión de Python.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/pyspark.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/pyspark.png)
 
 Para salir de esta shell, ingresa **quit()** y oprime enter.
 
