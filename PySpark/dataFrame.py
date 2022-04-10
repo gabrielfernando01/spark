@@ -59,6 +59,43 @@ df.printSchema()
 # The top rows of a DataFrame can be displayed using DataFrame.show()
 df.show(1)
 
+# The rows can also be shown vertically. This is useful when rows are too long to show horizontally
+df.show(1, vertical=True)
+
+# You can see the DataFrame's schema and column names as follows:
+df.columns
+
+df. printSchema()
+
+# Show the summary of the DataFrame
+df.select('a', 'b', 'c').describe.show()
+
+# DataFrame.collect() collects the distributed data to the driver side as the local data in Python.
+df.collect()
+
+# In order to avoid throwing an out-of-memory exception, use DataFrame.take() or DataFrame.tail()
+df.take(1)
+
+# PySpark DataFrame also provides the conversion back to a pandas DataFrame to leverage pandas API.
+df.toPandas()
+
+# Selecting and Accesing Data
+from pyspark.sql import Column
+from pyspark.sql.functions import upper
+
+type(df.c) == type(upper(df.c)) == type(df.c.isNull())
+
+# DataFrame.select() takes the Column instances that return another DataFrame
+df.select(df.c).show()
+
+# Assign new Column instance.
+df.withColumn('upper_c', upper(df.c)).show
+
+# To select a subset of rows, use DataFrame.filter()
+df.filter(df.a == 1).show()
+
+
+
 
 
 

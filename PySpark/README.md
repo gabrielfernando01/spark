@@ -148,3 +148,83 @@ df.show(1)
 ```
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/top_df.png)
+
+The rows can also be show vertically. This is useful when rows are too long to show horizontally.
+
+```
+df.show(1, vertical=True)
+```
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/df_vertical.png)
+
+You can see the DataFrame's schema and column names as follows:
+
+```
+df.columns
+
+df.printSchema()
+```
+
+Show the summary of the DataFrame
+
+```
+df.select('a', 'b', 'c').describe().show()
+```
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/df_summary.png)
+
+DataFrame.collect() collects the distributed data to the drive side as the local data in Python.
+
+```
+df.collect()
+```
+
+In order to avoid throwing an out-of-memory exception, use DataFrame.take() or Data.Frame.tail().
+
+```
+df.take(1)
+``` 
+
+PySpark DataFrame also provides the conversion back to a pandas DataFrame to leverage pandas API. Note that toPandas also collect all data into the driver side that can easily cause an out-of-memory-error when the data is too large to fit into the drive side.
+
+```
+df.toPanda()
+```
+
+### Selecting and Accesing Data
+
+PySpark DataFrame is lazily evaluated and simply selecting a column does not trigger the computation but it return a column instance.
+
+```
+df.a
+```
+
+In fact, most column wise operations return columns.
+
+```
+from pyspark.sql import Column
+from pyspark.sql.functions import upper
+
+type(df.c) == type(upper(df.c)) == type(df.c.isNull())
+```
+
+DataFrame.select() takes the column instances that returns another DataFrame.
+
+```
+df.select(df.c).show()
+```
+
+Assign new Column instance.
+
+```
+df.withColumn('upper_c', upper(df.c)).show()
+```
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/upper_df.png)
+
+To select a subset of row, use DataFrame.filter().
+
+```
+df.filter(df.a == 1).show()
+```
+
