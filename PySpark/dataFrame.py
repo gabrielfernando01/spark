@@ -44,7 +44,7 @@ df
 # Create a PySpark DataFrame from an RDD consisting of a list of tuples
 rdd = spark.sparkContext.parallelize([
     (1, 2., 'string1', date(2000, 1, 1), datetime(2000, 1, 12, 0)),
-    (1, 3., 'string2', date(2000, 1, 1), datetime(2000, 1, 2, 12, 0)),
+    (2, 3., 'string2', date(2000, 1, 1), datetime(2000, 1, 2, 12, 0)),
     (3, 4., 'string3', date(2000, 3, 1), datetime(2000, 1, 3, 12, 12, 0))
 ])
 
@@ -94,9 +94,15 @@ df.withColumn('upper_c', upper(df.c)).show
 # To select a subset of rows, use DataFrame.filter()
 df.filter(df.a == 1).show()
 
+# PySpark support various UDFs and APIs to allows users to execute Python native functions.
+import pandas
+from pyspark.sql.functions import pandas_udf
 
+@pandas_udf('long')
+def pandas_plus_one(series: pd.Series) -> pd.Series:
+    # Simply plus one by using pandas Series.
+    return series + 1
 
-
-
+df.select(pandas_plus_one(df.a)).show()
 
 
