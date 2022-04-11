@@ -245,3 +245,14 @@ def pandas_plus_one(series:pd.Series) -> pd.Series:
 	
 df.select(pandas_plus_one(df.a)).show()
 ```
+
+Another examples is DataFrame.mapInPandas which allows users directly use the APIs in a pandas DataFrame without any restrictions such as the result length.
+
+```
+def pandas_filter_func(iterator):
+	for pandas df in iterator:
+		yield pandas_df[pandas_df.a == 1]
+
+df.mapInPandas(pandas_filter_func, shema=df.schema).show()
+```
+
