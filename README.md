@@ -24,7 +24,7 @@ Antes de descargar y configurar Spark, necesitamos instalar dependencias. Estos 
 Abrimos una terminal y corremos el siguiente comando para la instalación de las tres paqueterias a la vez:
 
 ``` javascript
-sudo apt install default -jdk scala git -y
+sudo apt install default-jdk scala git -y
 ```
 
 Una vez que el proceso este completado, **verica que las dependencias esten instaladas** corriendo el siguiente comando:

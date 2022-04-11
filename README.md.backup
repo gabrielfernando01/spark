@@ -190,7 +190,7 @@ Deberás obtener una notificación en pantalla y la descripción de Spark. Por d
 
 Al finalizar la salida lucira la imagen con la versión que use al momento de escribir esta guia:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/spark_shell.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/spark_shell.png)
 
 ## Probando Python en Spark
 
@@ -204,7 +204,7 @@ pyspark
 
 La salida resultante luce similar a la anterior. En la parte inferior observarás la versión de Python.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/apache_spark/master/image/pyspark.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/pyspark.png)
 
 Para salir de esta shell, ingresa **quit()** y oprime enter.
 
