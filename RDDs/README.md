@@ -13,7 +13,7 @@ Lo primero que haremos es descargar los archivos .csv con los que vamos a trabaj
 
 Asegurate de descargarlos y descomprimirlos en alguna carpeta que tengas bien ubicada, en mi caso, como ejemplo usare el directorio ~/Documentos/scientist/spark/cosmetics/data. El peso de los archivos es el siguiente: 2.3 GB lo cual ya es importante.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDD/images/weight_data.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/images/weigth_data.png)
 
 Una vez, que tenemos listos nuestros datos. Arrancamos un cluster de Apache Spark en modo standalone, lo anterior quiere decir que tendremos el master y el worker en la misma máquina. Como ya creamos las variables de entorno, los mandamos llamar con el comando:
 
