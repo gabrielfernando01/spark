@@ -1,12 +1,33 @@
 # RDDs, Aplicaciones, Broadcast y acumuladores
 
-Esta es la segunda parte de la carpeta **dataFrame** por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo.
+Esta es la segunda parte de la carpeta [dataFrame](https://github.com/gabrielfernando01/spark/tree/master/dataFrame) por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo.
 
 ```
 start-master.sh
 ```
 
-Llamamos a un worker en nuestra propia máquina usando la url que podemos visualizar en la Web Spark Interface.
+Llamamos a un worker en nuestra propia máquina usando la url que podemos visualizar en la Spark Web Interface. Lo anterior lo podemos confirmar dentro de una pestaña de nuestro navegador llamando al localhost (127.0.0.1) y al puerto 8080, es decir, 127.0.0.1:8080
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/images/url.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/url.png)
 
+```
+start-slave.sh <url>
+```
+
+Damos refrescar al browser y podemos visualizar al worker. Es importante notar, que nuestro worker esta con status 'ALIVE', los núcleos de procesador que esta ocupando y la cantidad de memoria.
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/slave.png)
+
+Abrimos nuestra consola usando PySpark
+
+```
+pyspark
+```
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/export_paths.png)
+
+Usamos el mismo conjunto de datos, el cual descargamos de la página de [kaggle-data](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop) y cargamos estos ficheros. Recordar el lugar donde hayamos colocados los ficheros, que es la parte que tenemos que sustituir en path.
+
+```
+df = spark.read.options(header='True', inferSchema='True').csv('<path>/*.csv')
+```

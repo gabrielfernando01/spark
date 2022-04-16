@@ -11,7 +11,7 @@ Lo primero que haremos es descargar los archivos .csv con los que vamos a trabaj
 - 2020-Feb.csv
 - 2020-Jan.csv
 
-Asegurate de descargarlos y descomprimirlos en alguna carpeta que tengas bien ubicada, en mi caso, como ejemplo usare el directorio ~/Documentos/scientist/spark/cosmetics/data. El peso de los archivos es el siguiente: 2.3 GB lo cual ya es importante.
+Asegurate de descargarlos y descomprimirlos en alguna carpeta que tengas bien ubicada, en mi caso, como ejemplo usare el directorio ~/Documentos/scientist/spark/data/cosmetics/csv. El peso de los archivos es el siguiente: 2.3 GB lo cual ya es importante.
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrame/images/weigth_data.png)
 

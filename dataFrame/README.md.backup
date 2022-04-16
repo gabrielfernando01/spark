@@ -140,6 +140,4 @@ Consultar el número de registros que fueron puestos en el carrito.
 spark.sql("SELECT COUNT(*) FROM data WHERE event_type = 'cart'").show()
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/images/sql_count.png)
-
-
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrame/images/sql_count.png)
