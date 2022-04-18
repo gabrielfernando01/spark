@@ -1,6 +1,6 @@
 # RDDs, Aplicaciones, Broadcast y acumuladores
 
-Esta es la segunda parte de la carpeta [dataFrame](https://github.com/gabrielfernando01/spark/tree/master/dataFrame) por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo.
+Esta es la segunda parte de la carpeta [dataFrames](https://github.com/gabrielfernando01/spark/tree/master/dataFrames) por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo desde la shell de linux.
 
 ```
 start-master.sh
@@ -18,7 +18,7 @@ Damos refrescar al browser y podemos visualizar al worker. Es importante notar, 
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/slave.png)
 
-Abrimos nuestra consola usando PySpark
+Abrimos nuestra PySpark shell ejecutando pyspark.
 
 ```
 pyspark
@@ -70,5 +70,156 @@ Para la siguiente tarea usaremos una _lambda_, aunque para ello en PySpark neces
 def myFunc(s):
 	if["brand"]=="riche" and s["event_type"]=="cart":
 		return[(s["product_id"], 1)]
+	return[]	
+```
+
+Aplicamos un Map para insertar la función y que nos devuelva otro RDD, y en el caso de reduceByKey le pasaremos el resultado de la función para que los sume.
+
+```
+lines = df.rdd.flatMap(myFunc).reduceByKey(lambda a, b: a+b)
+```
+
+Queremos ver lo que hemos generado, para ello usamos un collect() para que recolecte lo procesado por el RDD.
+
+```
+for e in lines.collect():
+	print(e)
+```
+
+Debemos de ver un lista similar al siguiente:
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/collect.png)
+
+Lo que tenemos es una lista con todos los productos que han sido tomados de una marca en especifico. Otra forma de mostrar esta lista en con take(), mostremos los 20 primeros productos que aparecen:
+
+```
+print(lines.take(20))
+```
+
+Que más podemos hacer para mostrar la lista. Podemos convertir el RDD en un dataFrame y mostrarlos.
+
+```
+lines.toDF().show()
+```
+
+Guardemos la lista en una carpeta.
+
+```
+lines.saveAsTextFile("<path/directory_name>")
+```
+
+Debes de obtener un resultado similar al siguiente:
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/result2.png)
+
+### Ejecutar una API desde un clúster en Spark Web Interface.
+
+Para ello mandaremos llamar al master apoyado con un proceso ./spark-submit ubicado en el directorio /opt/spark/bin de Spark.
+
+Recordar que cuando descomprimimos el archivo de instalación, los ficheros se movieron al directorio /opt del directorio root. Esta API lleva el nombre de app1.py y debe ser guardado en el directorio \</opt/spark/bin/\>.
+
+```
+import sys
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+
+df = spark.read.option(header='True', inferSchema='True').csv(sys.arg[1])
+
+def myFunc(s):
+	if s["brand"]=="riche" and s["even_type"]=="cart":
+		return[(s["product_id"], 1)
 	return[]
-``` 
+	
+lines = df.rdd.flatMap(myFunc).reduceByKey(lambda: a, b: a+b)
+
+lines.saveAsText.File(sys.arg[2])
+```
+
+donde arg[1] y arg[2] son los directorios de entrada y salida correspondientemente. Los cuales le pasaremos cuando ejecutemos la aplicación.
+
+Para ejecutarlo llamamos al proceso ./spark-submit seguido de la url de nuestro Spark Web Interface, que en mi caso es spark://debian:7077, en seguida la \<app.1\> y finalmente los dos argumentos que son las rutas de entrada y salida en nuestra máquina. En mi terminal se observa de la siguiente manera:
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/enter_app.png)
+
+También revisamos los procesos del worker por la Spark Web Interface, en la imagen se ven varios procesos ejecutados con su descripción, los cuales fueron intentos fallidos por errores de dedo en el fichero app1.py
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/worker.png)
+
+### Variables broadcast y acumuladores.
+
+Dado que los RDDs hace procesos paralelamente, no podemos hacer uso de variables globales, en ese sentido es que usamos las variables broadcast que son solo de lectura y son cargadas por cada nodo. Construyamos otra API con el nombre app2.py en el mismo directorio prompt:/opt/spark/bin como ejemplo.
+
+```
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("app1").getOrCreate()
+
+# Broadcast
+broadcastVar = spark.sparkContext.broadcast([1, 2, 3])
+
+print("")
+print(broadcastVar.value)
+print("")
+```
+
+En este caso ejecutamos desde la línea de comandos:
+
+```
+prompt:/opt/spark/bin$ ./spark-submit --master <url_master> <name_app.py> 
+```
+
+Si la aplicación se ejecuto correctamente, debes de ver una pantalla similar a la siguiente:
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/broadcast.png)
+
+**Acumuladores** (contadores o sumas).
+
+Creamos nuestra tercer APPI de nombre app3.py
+
+```
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("app1").getOrCreate()
+
+# Broadcast
+broadcastVar = spark.sparkContext.broadcast([1, 2, 3])
+
+print("")
+print(broadcastVar.value)
+print("")
+
+# Acumulador
+accum = spark.sparkContext.accumulator(0)
+sumaError = 0
+
+def myFunc(x):
+	global sumaError
+	
+	acumm.add(x)
+	sumaError += x
+	
+rdd = spark.sparkContext.parallelize([1, 2, 3, 4, 5])
+
+rdd.foreach(myFunc)
+
+print("")
+print(accum)
+print(sumaError)
+print("")
+```
+
+Si la API fue ejecutada correctamente, debes obtener una pantalla similar a la siguiente:
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/accum.png)
+
+Esto nos devuelve un 15 para el acumulado y 0 para el sumatorio.
+
+Nuestro RDD lo que hizo fue lo siguiente:
+
+```
+rdd = spark.sparkContext.parallelize([1, 2, 3, 4, 5])
+
+	1 + 2 + 3 + 4 + 5
+```
+
