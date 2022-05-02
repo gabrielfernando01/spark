@@ -1,7 +1,7 @@
 # DataFrame y RDDs
 ## Proyecto cross selling
 
-El siguiente proyecto da los primeros pasos de commo cargar, y manipular ficheros tipo csv en **Apache Spark** utilizando **PySpark** para ello vamos a testear con la terminal con el paquete que ya vimos [Instalación de Spark](https://github.com/gabrielfernando01/spark/blob/master/README.md).
+El siguiente proyecto da los primeros pasos de como cargar, y manipular ficheros tipo csv en **Apache Spark** utilizando **PySpark** para ello vamos a testear con la terminal con el paquete instalado en la carpeta. [Instalación de Spark](https://github.com/gabrielfernando01/spark/blob/master/README.md).
 
 Lo primero que haremos es descargar los archivos .csv con los que vamos a trabajar, estos los encontraremos en el repositorio de Kaggle en la siguiente dirección [kaggle-data](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop). Son 5 archivos de nombre:
 
@@ -71,7 +71,7 @@ Ahora que ya conocemos _tipo de evento_ y _marcas_. Si queremos encontrar los o 
 df.select(["product_id"]).filter("event_type='cart'").show()
 ```
 
-Nos da una lista de productos, que han sido metidos al carrito. Escogamos el primero de la lista.
+Nos da una lista de productos, que han sido metidos al carrito. Escogemos el primero de la lista.
 
 ```
 df.select(["product_id"]).filter("event_type='cart'").first()
@@ -85,7 +85,7 @@ He escogido este producto 4958 (únicamente tome el primero de la lista), estoy 
 sessions = df.select(["user_session"]).filter("event_type='cart' AND product_id=4958")
 ```
 
-Ahora vamos a tomar todos los productos que distintos a nuestro producto original 4958 que estan en la lista u objeto sessions.
+Ahora vamos a tomar todos los productos distintos a nuestro producto original 4958 que están en la lista u objeto sessions.
 
 ```
 products = df.select(["product_id"]).filter("event_type='cart' AND product_id<>4958").filter(df["user_session"].isin(sessions["user_sessions]))
@@ -97,7 +97,7 @@ Tenemos la lista de productos que han sido tomadas en carrito conjuntamente con 
 products.select("product_id").show()
 ```
 
-En consola nos muestra los primeros 20 productos. Queremos saber que productos son, necesitos una lista de productos unicos.
+En consola nos muestra los primeros 20 productos. Queremos saber que productos son, necesitos una lista de productos únicos.
 
 ```
 products = products.select("product_id").distinct()

@@ -2,7 +2,7 @@
 # RDDs, Aplicaciones, Broadcast y acumuladores.
 
 # Cargamos los ficheros csv
-df = spark.read.options(header='True', inferSchema='True').csv('/home/gabriel/Documentos/scientist/spark/data/cosmetics/csv/*.csv')
+df = spark.read.options(header='True', inferSchema='True').csv('/home/gabi/Documentos/scientist/spark/data/cosmetics/csv/*.csv')
 
 # Mostrar el número de registros en la data
 df.count()
@@ -33,7 +33,7 @@ print(lines.take(20))
 lines.toDF().show()
 
 # Guardar la lista en un directorio
-lines.saveAsTextFile("/home/gabriel/Documentos/scientist/spark/data/cosmetics/result2")
+lines.saveAsTextFile("/home/gabi/Documentos/scientist/spark/data/cosmetics/result2")
 
 
 

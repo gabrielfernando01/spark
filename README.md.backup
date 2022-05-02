@@ -9,9 +9,9 @@ En este turorial, mostrare como **instalar Spark en una distribución Debian o U
 
 ### Prerequisitos
 
-- Un SO Debian o Ubuntu
-- Acceso a la linea de comandos o terminal
-- Un usuario con permisos sudo o **root**
+- Un SO Debian o sus derivadas.
+- Acceso a la linea de comandos o terminal.
+- Un usuario con permisos sudo o **root**.
 
 ## Instalar los paquetes requeridos por Spark
 
@@ -24,19 +24,20 @@ Antes de descargar y configurar Spark, necesitamos instalar dependencias. Estos 
 Abrimos una terminal y corremos el siguiente comando para la instalación de las tres paqueterias a la vez:
 
 ``` javascript
-sudo apt install default -jdk scala git -y
+sudo apt install default-jdk scala git -y
 ```
 
-Una vez que el proceso este completado, **verica que las dependencias esten instaladas** corriendo el siguiente comando:
+Una vez que el proceso este completado, **verifica que las dependencias esten instaladas** corriendo el siguiente comando:
 
 ``` javascript
 java -version; javac -version; scala -verison; git --version
 ```
-Se imprimiran las salida con la versiones correspondientes si la instalación por todos las paqueterías fue exitosa.
 
-## Descargar y Configurar Spark en Debian o Ubunto.
+Se imprimirán las salida con la versiones correspondientes, si la instalación por todos las paqueterías fue exitosa.
 
-Ahora, necesitamos descargar la version de Spark que quieras y este disponible desde el sitio web oficial. Al momento de editar este texto la versión más actualizada es $Spark 3.2.1$ (Enero 26 2022) conjuntamente con la paquetería $Hadoop 3.3$.
+## Descargar y Configurar Spark en Debian o Ubuntu.
+
+Ahora, necesitamos descargar la versión de Spark que quieras y este disponible desde el sitio web oficial. Al momento de editar este texto la versión más actualizada es _Spark 3.2.1_ (Enero-26-2022) conjuntamente con la paquetería _Hadoop 3.2_.
 
 Usamos el comando **wget** junto con la liga del sitio  para la descarga de nuestro archivo Spark:
 
@@ -51,11 +52,12 @@ wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 Ahora, extraemos el archivo guardado usando _tar:_
 
 ``` javascript
-wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
+tar xvf spark-*
 ```
+
 Deje que el proceso se complete. La salida muestra los ficheros que se están desempaquetando desde el archivo.
 
-Finalmente, movemos el directorio desempaquetado $spark-3.2.1-bin-hadoop3.2 al directorio _**opt/spark**_.
+Finalmente, movemos el directorio desempaquetado spark-3.2.1-bin-hadoop3.2 al directorio _**opt/spark**_.
 
 Usando el comando **mv** para cortar y pegar: 
 

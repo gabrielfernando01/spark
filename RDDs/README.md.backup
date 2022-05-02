@@ -24,9 +24,9 @@ Abrimos nuestra PySpark shell ejecutando pyspark.
 pyspark
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/export_paths.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/spark_shell.png)
 
-Usamos el mismo conjunto de datos, el cual descargamos de la página de [kaggle-data](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop) y cargamos estos ficheros. Recordar el lugar donde hayamos colocados los ficheros, que es la parte que tenemos que sustituir en path.
+Usamos el mismo conjunto de datos, el cual descargamos de la página de [kaggle-data](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop) y cargamos estos ficheros. Mandandolos a llamar desde el path de nuestra máquina.
 
 ```
 df = spark.read.options(header='True', inferSchema='True').csv('<path>/*.csv')
@@ -55,7 +55,6 @@ De las marcas disponibles, tomemos una, en este caso "riche". Encontremos ahora 
 
 ***
 ### Operaciones con RDDs
-Operaciones RDD
 
 Los RDD admiten dos tipos de operaciones: _transformaciones_, que crean un nuevo conjunto de datos a partir de uno existente, y acciones, que devuelven un valor al programa controlador después de ejecutar un cálculo en el conjunto de datos. Por ejemplo, el mapa es una transformación que pasa cada elemento del conjunto de datos a través de una función y devuelve un nuevo RDD que representa los resultados. Por otro lado, _reduce_ es una acción que agrega todos los elementos del RDD usando alguna función y devuelve el resultado final al programa controlador (aunque también existe un **reduceByKey** paralelo que devuelve un conjunto de datos distribuido).
 
@@ -64,7 +63,7 @@ Todas las transformaciones en Spark son _lazy_, ya que no calculan sus resultado
 De forma predeterminada, cada RDD transformado se puede volver a calcular cada vez que ejecuta una acción en él. Sin embargo, también puede conservar un RDD en la memoria usando el método persistente (o caché), en cuyo caso Spark mantendrá los elementos en el clúster para un acceso mucho más rápido la próxima vez que lo consulte. También hay soporte para RDD persistentes en el disco o replicados en múltiples nodos.
 ***
 
-Para la siguiente tarea usaremos una _lambda_, aunque para ello en PySpark necesitamos definir primero una función para hacer el contador que ocupamos.
+Para la siguiente tarea usaremos una _lambda_, aunque para ello PySpark necesitamos definir primero una función para un contador que ocuparemos.
 
 ```
 def myFunc(s):
@@ -102,7 +101,7 @@ Que más podemos hacer para mostrar la lista. Podemos convertir el RDD en un dat
 lines.toDF().show()
 ```
 
-Guardemos la lista en una carpeta.
+Guardemos la lista en una carpeta, en mi caso la nombre 'result2'.
 
 ```
 lines.saveAsTextFile("<path/directory_name>")
@@ -114,9 +113,7 @@ Debes de obtener un resultado similar al siguiente:
 
 ### Ejecutar una API desde un clúster en Spark Web Interface.
 
-Para ello mandaremos llamar al master apoyado con un proceso ./spark-submit ubicado en el directorio /opt/spark/bin de Spark.
-
-Recordar que cuando descomprimimos el archivo de instalación, los ficheros se movieron al directorio /opt del directorio root. Esta API lleva el nombre de app1.py y debe ser guardado en el directorio \</opt/spark/bin/\>.
+Para ello mandaremos llamar al master apoyado con un proceso ./spark-submit ubicado en el directorio /opt/spark/bin de Spark. En otras palabras, creamos un script de nombre app1.py y para ejecutarlo lo guardamos en el directorio \<origin\>/bin/
 
 ```
 import sys
@@ -124,25 +121,32 @@ from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.getOrCreate()
 
-df = spark.read.option(header='True', inferSchema='True').csv(sys.arg[1])
+df = spark.read.options(header='True', inferSchema='True').csv(sys.argv[1])
 
 def myFunc(s):
-	if s["brand"]=="riche" and s["even_type"]=="cart":
-		return[(s["product_id"], 1)
-	return[]
-	
-lines = df.rdd.flatMap(myFunc).reduceByKey(lambda: a, b: a+b)
+    if s["brand"]=="riche" and s["event_type"]=="cart":
+        return[(s["product_id"], 1)]
+    return[]
 
-lines.saveAsText.File(sys.arg[2])
+lines = df.rdd.flatMap(myFunc).reduceByKey(lambda a, b: a+b)
+
+lines.saveAsTextFile(sys.argv[2])
 ```
 
-donde arg[1] y arg[2] son los directorios de entrada y salida correspondientemente. Los cuales le pasaremos cuando ejecutemos la aplicación.
+donde argv[1] y argv[2] son los directorios de entrada y salida correspondientemente. Los cuales le pasaremos cuando ejecutemos la aplicación y deben ir entre comillas.
 
-Para ejecutarlo llamamos al proceso ./spark-submit seguido de la url de nuestro Spark Web Interface, que en mi caso es spark://debian:7077, en seguida la \<app.1\> y finalmente los dos argumentos que son las rutas de entrada y salida en nuestra máquina. En mi terminal se observa de la siguiente manera:
+Para ejecutarlo llamamos al proceso ./spark-submit seguido de, --master local[4] que es lo que haré en este ejemplo, en seguida la el script .py que en mi caso lo nombre app1.py y finalmente los dos argumentos entre comillas, que son las rutas de entrada y salida en nuestra máquina, en el caso del argv[2] debes darle un nombre a la carpeta donde se depositarán los ficheros, en mi caso, la nombro _result3_. En mi terminal se observa de la siguiente manera:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/enter_app.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/app1.png)
 
-También revisamos los procesos del worker por la Spark Web Interface, en la imagen se ven varios procesos ejecutados con su descripción, los cuales fueron intentos fallidos por errores de dedo en el fichero app1.py
+Exiten varias maneras de ejecutar el script .py. Si hiciste la intalación de **Spark** por medio de **PyPI** puedes ejecutar el script desde la terminila con tan solo escribir:
+
+```
+$ python3 app1.py
+```
+
+
+Para lo anterior, el fichero app1.py debe estar guardado en el \<HOME\> de tu computadora. Por otro lado si ejecutas el script usando el panel **Spark UI** debes de inserta; en el directorio \<HOME\/bin$> ./spark-submit --master \<URL\>, en mi caso es, spark://gabi-HP-Stream-Laptop-14-ax1xxx:7077 y entre comillas los directorios argv[1], argv[2], de esta manera el worker indicara los procesos ejecutados con su descripción.
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/worker.png)
 
@@ -223,4 +227,3 @@ rdd = spark.sparkContext.parallelize([1, 2, 3, 4, 5])
 	1 + 2 + 3 + 4 + 5
 ```
 
-^
