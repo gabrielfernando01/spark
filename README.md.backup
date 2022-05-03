@@ -30,7 +30,7 @@ sudo apt install default-jdk scala git -y
 Una vez que el proceso este completado, **verifica que las dependencias esten instaladas** corriendo el siguiente comando:
 
 ``` javascript
-java -version; javac -version; scala -verison; git --version
+java -version; javac -version; scala -version; git --version
 ```
 
 Se imprimirán las salida con la versiones correspondientes, si la instalación por todos las paqueterías fue exitosa.

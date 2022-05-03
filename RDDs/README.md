@@ -24,9 +24,9 @@ Abrimos nuestra PySpark shell ejecutando pyspark.
 pyspark
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/spark_shell.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/pyspark.png)
 
-Usamos el mismo conjunto de datos, el cual descargamos de la página de [kaggle-data](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop) y cargamos estos ficheros. Mandandolos a llamar desde el path de nuestra máquina.
+Usamos el mismo conjunto de datos, el cual descargamos de la página de [kaggle-data](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop) y cargamos estos ficheros. Los llamamos en el path de nuestra máquina.
 
 ```
 df = spark.read.options(header='True', inferSchema='True').csv('<path>/*.csv')
@@ -135,24 +135,24 @@ lines.saveAsTextFile(sys.argv[2])
 
 donde argv[1] y argv[2] son los directorios de entrada y salida correspondientemente. Los cuales le pasaremos cuando ejecutemos la aplicación y deben ir entre comillas.
 
-Para ejecutarlo llamamos al proceso ./spark-submit seguido de, --master local[4] que es lo que haré en este ejemplo, en seguida la el script .py que en mi caso lo nombre app1.py y finalmente los dos argumentos entre comillas, que son las rutas de entrada y salida en nuestra máquina, en el caso del argv[2] debes darle un nombre a la carpeta donde se depositarán los ficheros, en mi caso, la nombro _result3_. En mi terminal se observa de la siguiente manera:
+Para ejecutarlo llamamos al proceso ./spark-submit seguido de, --master local[4] que es lo que haré en este ejemplo, en seguida el script .py que en mi caso lo nombre app1.py y finalmente los dos argumentos entre comillas, que son las rutas de entrada y salida en nuestra máquina, en el caso del argv[2] debes darle un nombre a la carpeta donde se depositarán los ficheros, en mi caso, la nombro _result3_. En mi terminal se observa de la siguiente manera:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/app1.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/result3.png)
 
-Exiten varias maneras de ejecutar el script .py. Si hiciste la intalación de **Spark** por medio de **PyPI** puedes ejecutar el script desde la terminila con tan solo escribir:
+Exiten varias maneras de ejecutar el script .py. Si hiciste la intalación de **Spark** por medio de **PyPI** puedes ejecutar el script desde la terminil con tan solo escribir:
 
 ```
 $ python3 app1.py
 ```
 
 
-Para lo anterior, el fichero app1.py debe estar guardado en el \<HOME\> de tu computadora. Por otro lado si ejecutas el script usando el panel **Spark UI** debes de inserta; en el directorio \<HOME\/bin$> ./spark-submit --master \<URL\>, en mi caso es, spark://gabi-HP-Stream-Laptop-14-ax1xxx:7077 y entre comillas los directorios argv[1], argv[2], de esta manera el worker indicara los procesos ejecutados con su descripción.
+Para lo anterior, el fichero app1.py debe estar guardado en el \<HOME\> de tu computadora. Por otro lado si ejecutas el script usando el panel **Spark UI** debes de inserta; en el directorio \<HOME\>/bin$ ./spark-submit --master \<URL\>, en mi caso es, spark://gabi-HP-Stream-Laptop-14-ax1xxx:7077 y entre comillas los directorios argv[1], argv[2], de esta manera el worker indicara los procesos ejecutados con su descripción.
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/worker.png)
 
 ### Variables broadcast y acumuladores.
 
-Dado que los RDDs hace procesos paralelamente, no podemos hacer uso de variables globales, en ese sentido es que usamos las variables broadcast que son solo de lectura y son cargadas por cada nodo. Construyamos otra API con el nombre app2.py en el mismo directorio prompt:/opt/spark/bin como ejemplo.
+Dado que los RDDs realizan procesos paralelamente, no podemos hacer uso de variables globales, en ese sentido es que usamos las variables broadcast que son solo de lectura y son cargadas por cada nodo. Construyamos otra API con el nombre app2.py en el mismo directorio \<HOME\>/bin$
 
 ```
 from pyspark.sql import SparkSession
@@ -170,16 +170,16 @@ print("")
 En este caso ejecutamos desde la línea de comandos:
 
 ```
-prompt:/opt/spark/bin$ ./spark-submit --master <url_master> <name_app.py> 
+<HOME>/bin$ ./spark-submit --master <url_master> <name_app.py> 
 ```
 
 Si la aplicación se ejecuto correctamente, debes de ver una pantalla similar a la siguiente:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/broadcast.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/app2.png)
 
 **Acumuladores** (contadores o sumas).
 
-Creamos nuestra tercer APPI de nombre app3.py
+Creamos nuestra tercer API de nombre app3.py
 
 ```
 from pyspark.sql import SparkSession
@@ -215,7 +215,7 @@ print("")
 
 Si la API fue ejecutada correctamente, debes obtener una pantalla similar a la siguiente:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/accum.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/app3.png)
 
 Esto nos devuelve un 15 para el acumulado y 0 para el sumatorio.
 

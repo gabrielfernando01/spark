@@ -30,7 +30,7 @@ sudo apt install default-jdk scala git -y
 Una vez que el proceso este completado, **verifica que las dependencias esten instaladas** corriendo el siguiente comando:
 
 ``` javascript
-java -version; javac -version; scala -verison; git --version
+java -version; javac -version; scala -version; git --version
 ```
 
 Se imprimirán las salida con la versiones correspondientes, si la instalación por todos las paqueterías fue exitosa.
@@ -82,8 +82,9 @@ También podemos agregar las rutas de exportación editando el fichero _.profile
 Por ejemplo, para el editor nano, ingresamos:
 
 ```javascript
-nano .profile
+nano ~/.profile
 ```
+
 Cuando carge profile, nos posecionamos al final del archivo:
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/export_paths.png)
