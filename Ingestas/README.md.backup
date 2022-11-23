@@ -3,7 +3,7 @@
 
 En este directorio se busca dar a entender cuales son los elementos básicos y necesarios para iniciar un proyecto con Apache Spark y el lenguaje de programación <code>Scala</code>.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/scala/master/Ingestas/image/header_scala.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/scala/master//image/header_scala.png)
 
 Requisitos:
 
@@ -78,3 +78,4 @@ openjdk version "1.8.0_242"
 OpenJDK Runtime Environment (build 1.8.0_242-b09)
 OpenJDK 64-Bit Server VM (build 25.242-b09, mixed mode)
 ```
+
