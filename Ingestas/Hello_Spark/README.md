@@ -18,7 +18,7 @@ Ahora damos click en Projects enseguida a <code>New Proyect</code>:
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/Ingestas/image/new_project.png)
 
-Nos abrira una ventana de configuaración, aqui es importante empezar a comentar que es un fichero <code>pom.xml</code>, de manera simplista podemos decir que es una plantilla que tendrá las configuraciones, dependencias, librerias de nuestro proyecto, y dado que el fichero que se encuentra en esta carpeta trae la version <code>scala 2.11</code> en el nuestro _pom.xml_ esa es la que tenemos que elegir, aunque si cambias el <code>pom.xml</code> basta con cambiarlo esta ventana de configuración, también es importante que en la barra desplegable JDK, uses precisamente una que contenga el JDK, en mi caso tengo descargada el openJDK-18 aunque te servirá cualquiera otra version JDK:
+Nos abrira una ventana de configuaración, aqui es importante empezar a comentar que es un fichero <code>pom.xml</code>, de manera simplista podemos decir que es una plantilla que tendrá las configuraciones, dependencias, librerias de nuestro proyecto, y dado que en nuestro fichero _pom.xml_ que se encuentra en esta carpeta GitHub trae la version <code>scala 2.11</code> esa es la que tenemos que elegir en nuestra ejercicio y nuestra configuración, aunque si cambias el <code>pom.xml</code> basta con hacer el respectivo cambio. Además también es importante que en la barra desplegable **JDK** uses precisamente una que contenga el JDK, en mi caso tengo descargada el openJDK-18 aunque te servirá cualquiera otra version JDK:
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/Ingestas/image/configuration_hello.png)
 
@@ -26,7 +26,7 @@ La ventana que tiene que aparecer debe ser la siguiente, a continuación damos c
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/scala/master/Ingestas/image/pantalla_inicial.png)
 
-Y elegimios la opsción <code>Add Framework Support...</code> lo cual desplegara la siguiente ventana donde activaremos el check de <code>Maven</code>, debes saber que este paso es que habilita el servidor, dado que la arquitectura de Apache Spark cuando deje de funcionar en nuestra maquina <code>local</code> pasará a vivir en un cluster.
+Y elegimios la opsción <code>Add Framework Support...</code> lo cual desplegará la siguiente ventana donde activaremos el check de <code>Maven</code>, debes saber que este paso es que habilita el servidor, dado que la arquitectura de Apache Spark cuando deje de funcionar en nuestra maquina <code>local</code> pasará a vivir en un cluster.
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/scala/master/Ingestas/image/add_framework.png)
 
