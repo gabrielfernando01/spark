@@ -3,6 +3,10 @@
 # Instalación de Spark en GNU/Linux Debian
 ## Introduction
 
+[web_spark](https://spark.apache.org/) 
+
+Apache Spark is a multi-languange engine for executing data engineering, data science, and machine learning on single-node machines or cluster.
+
 Apache Spark es un framework(conjunto de herramientas) usadas en el entorno de agrupación computacional para el **análisis de big data**.
 
 En este turorial, mostrare como **instalar Spark en una distribución Debian o Ubuntu**. La guia muestra como inicializar un servidor maestro (master) y trabajador (slave), y como cargar las terminales (shells) de Scala y Python. Así como los principales comandos de Spark.
