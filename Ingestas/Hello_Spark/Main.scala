@@ -42,9 +42,7 @@ object Main {
         val rdd5 = rdd4.filter(x => x._1 > 3)
         println(rdd5.collect().toList)
 
-        val nuemros1 = List(
-            "1, Uno, One;2, Dos, Two;3, Tres, Three;4, Cuatro, Four;5, Cinco, Five"
-        )
+        val numeros1 = List("1, Uno, One;2, Dos, Two;3, Tres, Three;4, Cuatro, Four;5, Cinco, Five")
         val rdd6 = sC.parallelize(numeros1)
         val rdd7 = rdd6.map(x => x.split(regex = ";"))
         val rdd8 = rdd7.flatMap(x => x)
