@@ -1,6 +1,6 @@
 # RDDs, Aplicaciones, Broadcast y acumuladores
 
-Esta es la segunda parte de la carpeta [dataFrames](https://github.com/gabrielfernando01/spark/master/dataFrames_and_RDD/dataFrames) por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo desde la shell de linux.
+Esta es la segunda parte de la carpeta [dataFrames](https://github.com/gabrielfernando01/spark/tree/master/dataFrames_and_RDD/dataFrames) por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo desde la shell de linux.
 
 ```
 start-master.sh
@@ -8,7 +8,7 @@ start-master.sh
 
 Llamamos a un worker en nuestra propia máquina usando la url que podemos visualizar en la Spark Web Interface. Lo anterior lo podemos confirmar dentro de una pestaña de nuestro navegador llamando al localhost (127.0.0.1) y al puerto 8080, es decir, 127.0.0.1:8080
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/url.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/url.png)
 
 ```
 start-slave.sh <url>
@@ -16,7 +16,7 @@ start-slave.sh <url>
 
 Damos refrescar al browser y podemos visualizar al worker. Es importante notar, que nuestro worker esta con status 'ALIVE', los núcleos de procesador que esta ocupando y la cantidad de memoria.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/slave.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/slave.png)
 
 Abrimos nuestra PySpark shell ejecutando pyspark.
 
@@ -24,7 +24,7 @@ Abrimos nuestra PySpark shell ejecutando pyspark.
 pyspark
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/pyspark.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/image/pyspark.png)
 
 Usamos el mismo conjunto de datos, el cual descargamos de la página de [kaggle-data](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop) y cargamos estos ficheros. Los llamamos en el path de nuestra máquina.
 
@@ -39,7 +39,7 @@ df.count()
 df.printSchema()
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/schema.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/schema.png)
 
 Nuestro conjunto de datos contiene el registro de el movimiento en una tienda digital por parte de varias marcas y productos. Entre las muchas cosas que nos podemos preguntar es, ¿cuántos productos se han comprado de una marca determinada, con el subtotal correspondiente?.
 
@@ -49,7 +49,7 @@ Mostramos todas las marcas disponibles:
 df.select("brand").distinct().show()
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/brands.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/brands.png)
 
 De las marcas disponibles, tomemos una, en este caso "riche". Encontremos ahora que productos se han vendido de dicha marca. Agregando que en este momento empezaremos a utilizar [RDDs](https://spark.apache.org/docs/latest/rdd-programming-guide.html)
 
@@ -87,7 +87,7 @@ for e in lines.collect():
 
 Debemos de ver un lista similar al siguiente:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/collect.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/collect.png)
 
 Lo que tenemos es una lista con todos los productos que han sido tomados de una marca en especifico. Otra forma de mostrar esta lista en con take(), mostremos los 20 primeros productos que aparecen:
 
@@ -109,7 +109,7 @@ lines.saveAsTextFile("<path/directory_name>")
 
 Debes de obtener un resultado similar al siguiente:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/result2.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/result2.png)
 
 ### Ejecutar una API desde un clúster en Spark Web Interface.
 
@@ -137,7 +137,7 @@ donde argv[1] y argv[2] son los directorios de entrada y salida correspondientem
 
 Para ejecutarlo llamamos al proceso ./spark-submit seguido de, --master local[4] que es lo que haré en este ejemplo, en seguida el script .py que en mi caso lo nombre app1.py y finalmente los dos argumentos entre comillas, que son las rutas de entrada y salida en nuestra máquina, en el caso del argv[2] debes darle un nombre a la carpeta donde se depositarán los ficheros, en mi caso, la nombro _result3_. En mi terminal se observa de la siguiente manera:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/result3.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/result3.png)
 
 Exiten varias maneras de ejecutar el script .py. Si hiciste la intalación de **Spark** por medio de **PyPI** puedes ejecutar el script desde la terminil con tan solo escribir:
 
@@ -148,7 +148,7 @@ $ python3 app1.py
 
 Para lo anterior, el fichero app1.py debe estar guardado en el \<HOME\> de tu computadora. Por otro lado si ejecutas el script usando el panel **Spark UI** debes de inserta; en el directorio \<HOME\>/bin$ ./spark-submit --master \<URL\>, en mi caso es, spark://gabi-HP-Stream-Laptop-14-ax1xxx:7077 y entre comillas los directorios argv[1], argv[2], de esta manera el worker indicara los procesos ejecutados con su descripción.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/worker.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/worker.png)
 
 ### Variables broadcast y acumuladores.
 
@@ -175,7 +175,7 @@ En este caso ejecutamos desde la línea de comandos:
 
 Si la aplicación se ejecuto correctamente, debes de ver una pantalla similar a la siguiente:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/app2.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/app2.png)
 
 **Acumuladores** (contadores o sumas).
 
@@ -215,7 +215,7 @@ print("")
 
 Si la API fue ejecutada correctamente, debes obtener una pantalla similar a la siguiente:
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/RDDs/image/app3.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/RDDs/image/app3.png)
 
 Esto nos devuelve un 15 para el acumulado y 0 para el sumatorio.
 
