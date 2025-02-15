@@ -1,6 +1,6 @@
 # RDDs, Aplicaciones, Broadcast y acumuladores
 
-Esta es la segunda parte de la carpeta [dataFrames](https://github.com/gabrielfernando01/spark/tree/master/dataFrames) por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo desde la shell de linux.
+Esta es la segunda parte de la carpeta [dataFrames](https://github.com/gabrielfernando01/spark/master/dataFrames_and_RDD/dataFrames) por lo que iniciaremos nuevamente en modo standalone, iniciando las instancias master-esclavo desde la shell de linux.
 
 ```
 start-master.sh

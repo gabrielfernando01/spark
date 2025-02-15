@@ -13,7 +13,7 @@ Lo primero que haremos es descargar los archivos .csv con los que vamos a trabaj
 
 Asegurate de descargarlos y descomprimirlos en alguna carpeta que tengas bien ubicada, en mi caso, como ejemplo usare el directorio ~/Documentos/scientist/spark/data/cosmetics/csv. El peso de los archivos es el siguiente: 2.3 GB lo cual ya es importante.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames/images/weigth_data.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/dataFrames/images/weigth_data.png)
 
 Una vez, que tenemos listos nuestros datos. Arrancamos un cluster de Apache Spark en modo standalone, lo anterior quiere decir que tendremos el master y el worker en la misma máquina. Como ya creamos las variables de entorno, los mandamos llamar con el comando:
 
@@ -27,7 +27,7 @@ Seguido abriremos la shell de PySpark:
 pyspark
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/pyspark.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/image/pyspark.png)
 
 Y a través de la shell cargamos el dataset:
 
@@ -57,7 +57,7 @@ En la variable 'event_type' nos muestra el tipo de evento que tiene el registro,
 df.select("event_type").distinct.show()
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames/images/event_type.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/dataFrames/images/event_type.png)
 
 Marcas o Proveedores disponibles:
 
@@ -77,7 +77,7 @@ Nos da una lista de productos, que han sido metidos al carrito. Escogemos el pri
 df.select(["product_id"]).filter("event_type='cart'").first()
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames/images/first.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/dataFrames/images/first.png)
 
 He escogido este producto 4958 (únicamente tome el primero de la lista), estoy interesado en saber todas las sesiones en las que este producto se ha metido al carrito.
 
@@ -140,4 +140,4 @@ Consultar el número de registros que fueron puestos en el carrito.
 spark.sql("SELECT COUNT(*) FROM data WHERE event_type = 'cart'").show()
 ```
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames/images/sql_count.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/dataFrames_and_RDD/dataFrames/images/sql_count.png)
