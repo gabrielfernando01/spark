@@ -10,7 +10,7 @@ Para crear el siguiente proyecto Spark - Scala con IntelliJ IDEA te comparto los
 - 🪶 Maven version: 3.8.7
 - 🔌 sbt version: 1.10.7
 - 💥 Spark version: 3.5.1
-- 🟧 IntelliJ IDEA: 24.04
+- 🟧 IntelliJ IDEA: 24.1
 
 Es importantante validar las versiones y las variables de entorno:
 
@@ -37,10 +37,28 @@ version 3.5.1
 Using Scala version 2.13.8, OpenJDK 64-Bit Server VM, 11.0.26
 ```
 
-Una vez validado los recursos y las variables de entorno, continuamos con la configuración del proyecto en IntelliJ IDEA
+Una vez validado los recursos y las variables de entorno, continuamos con la configuración del proyecto en IntelliJ IDEA.
 
-1. Intalar el plugin de Scala en IntelliJ IDEA
+1. Intalar el plugin de Scala 🟥 en IntelliJ IDEA.
 
 Al abrir el IDE IntelliJ en el menú de la izquierda seleccionamos **Plugins**, en el buscador del panel derecho en la barra de buscador escribimos Scala, e intalamos el plugin.
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/HelloBasicSpark/images/plugin_scala.png)
+
+Reinicimos el IDE y en el menu izquierdo elegimos <code>Project</code>, de lado derecho elegimos <code>New Project</code>.
+
+En mi caso tengo la version 24.04 de IntelliJ y mi projecto lo configuro a partir de un <code>pom.xml</code> por lo que en el menú izquierdo eligo <code>Maven archetype</code>, eligimos un Name, puede ser <code>HelloBasicSpark</code>, la ubicación (location) puede ser cualquiera del ordenador, la casilla de Git de momento la dejo desactivada. Cuando seleccionamos el **JDK** puedes descargar alguno que aparezca en la lista o usar alguno descargado anteriormente, en mi caso agrego el ya instalado en mi ordenador que en mi caso esta en <code>/usr/lib/jvm/java-11-openjdk-amd64</code>.
+
+En Archetype elegimos lo siguiente:
+
+- Groupid: <code>com.example</code>
+- Artifactld: <code>spark-scala-project</code>
+- Version: <code>1.0-SNAPSHOT</code>
+
+Damos Create.
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/HelloBasicSpark/images/maven_architype.png)
+
+En el siguiente directorio encontraras el fichero <code>pom.xml</code> que deberás remplazar en el proyecto 
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/HelloBasicSpark/images/pom.png)
