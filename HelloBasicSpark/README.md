@@ -57,8 +57,26 @@ En Archetype elegimos lo siguiente:
 
 Damos Create.
 
-![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/HelloBasicSpark/images/maven_architype.png)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/HelloBasicSpark/images/maven_archetype.png)
 
 En el siguiente directorio encontraras el fichero <code>pom.xml</code> que deberás remplazar en el proyecto 
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/HelloBasicSpark/images/pom.png)
+
+Haz clic derecho en el fichero <code>pom.xlm</code> en el panel izquierdo de directorios y selecciona **Add as Maven Project**. Esto descarga las dependencias necesarias.
+
+**Directorio del proyecto:**
+
+- Crea los siguientes directorios dentro del directorio <code>HelloBasicSpark</code>
+
+	- src/main/scala
+	- src/main/resource
+
+- Crea una clase Scala:
+
+	- Dentro de <code>src/main/scala</code>, crea un paquete, por ejemplo, <code>com.example</code>.
+	- Dentro del paquete, crea una clase Scala llamada <code>MainApp</code> de tipo Object.
+	
+Si tu código se compilo y ejecuto correctamente tendrás que ver algo similar a lo siguiente 👇:
+
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/HelloBasicSpark/images/run.png)
