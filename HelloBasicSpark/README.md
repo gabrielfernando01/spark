@@ -35,6 +35,8 @@ $ echo $SBT_HOME
 $ spark-shell --version
 version 3.5.1
 Using Scala version 2.13.8, OpenJDK 64-Bit Server VM, 11.0.26
+$ echo $SPARK_HOME
+/opt/spark
 ```
 
 Una vez validado los recursos y las variables de entorno, continuamos con la configuración del proyecto en IntelliJ IDEA.
