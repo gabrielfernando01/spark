@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="ScalaLaucher">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="$PROJECT_DIR$/../../../../../job /companies/ntt_data/ejercicios_ejecutables_scala_spark/Scala/ScalaLaucher/target/.scala_dependencies" />
+      </parameters>
+    </profile>
+  </component>
+</project>
