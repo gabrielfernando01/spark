@@ -6,7 +6,7 @@ object ScalaLaucher extends App {
 
   /*
     Hola mundo
-    Que tal estas?
+    Como estas?
    */
 
   /**
@@ -64,7 +64,7 @@ object ScalaLaucher extends App {
   println(personasSeq.map(x => (x._1 + "-", x._2 + 3)))
 
   /**
-   * MAP (clave -> valor)
+   * MAP (key -> value)
    */
 
   val paises = Map(
@@ -92,7 +92,7 @@ object ScalaLaucher extends App {
 
 
   /**
-   * DEFINICIÓN DE FUNCIONS SCALA
+   * Scala function definition
    */
 
   /**
@@ -107,34 +107,34 @@ object ScalaLaucher extends App {
     x + y
   }
 
-  val listPersona: List[(String, Int)] = List(("Ruben", 29), ("María", 26), ("Pablo", 30))
+  val listPeople: List[(String, Int)] = List(("Steve", 29), ("Kenia", 26), ("Fred", 30))
 
   // Ejercicio: Hallar la edad media del grupo de personas
 
-  def mediaEdad(personas: List[(String, Int)]): Double = {
-    personas.map(_._2).sum.toDouble / personas.length.toDouble
+  def averageAge(people: List[(String, Int)]): Double = {
+    people.map(_._2).sum.toDouble / people.length.toDouble
   }
-  println("La edad media de las personas es de: " + mediaEdad(listPersona))
+  println("The average age is: " + averageAge(listPeople))
 
   // Ejercicio: Hallar el nombre de la persona con más edad
-  def personaMax(personas: List[(String, Int)]): String = {
-    val edadMax = personas.map(_._2).max
-    personas.filter(x => x._2 == edadMax)(0)._1
+  def oldestPerson(people: List[(String, Int)]): String = {
+    val ageMax = people.map(_._2).max
+    people.filter(x => x._2 == ageMax)(0)._1
   }
-  println("La persona con más edad es: " + personaMax(listPersona))
+  println("The person oldest is: " + oldestPerson(listPersona))
 
   /**
    * MATCH
    */
-  def queHagoHoy(dia: String): Unit = {
-    dia match {
-      case "Sabado" => println("Fiesta")
-      case "Domingo" => println("Dormir")
-      case _ => println("Programar en Scala")
+  def whatSpendToday(dia: String): Unit = {
+    day match {
+      case "Saturaday" => println("Party")
+      case "Sunday" => println("Sleep")
+      case _ => println("Programming in Scala")
     }
   }
-  queHagoHoy("Sabado")
-  queHagoHoy("Lunes")
+  whatSpendToday("Saturday")
+  whatSpendToday("anything")
 
   /**
    * ANY & OPTION & EITHER
