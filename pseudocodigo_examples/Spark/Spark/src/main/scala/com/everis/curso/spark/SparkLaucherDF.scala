@@ -1,0 +1,129 @@
+package com.everis.curso.spark
+
+import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.functions._
+
+object SparkLaucherDF extends App {
+
+  implicit val spark = SparkSession.builder()
+    .appName("Apache Spark App DataFrame")
+    .config("spark.master", "local")
+    .getOrCreate()
+
+  val sc = spark.sparkContext
+
+  /**
+   * DATAFRAMES
+   */
+
+  val personalInfoSeq = Seq(
+    ("Roberto", "Jimenez Sanchez", 45, "ES"),
+    ("María", "Garcia Moreno", 37, "LD"),
+    ("Manuel", "Romero Diaz", 56, "PE"),
+    ("Susana", "Fernandez Sanz", 40, "MX")
+  )
+
+  val pilotInfoSeq = Seq(
+    ("Roberto", 100272727, "Ibería", 17),
+    ("María", 100010101, "Ryanair", 23),
+    ("Manuel", 100444444, "Air Europa", 15),
+    ("Susana", 100151515, "Lufthansa", 32)
+  )
+
+  val salaryInfoSeq = Seq(
+    (100272727, 30000),
+    (100010101, 80000),
+    (100151515, 35000),
+    (100444444, 50000)
+  )
+
+  val dictionaryInfoSeq = Seq(
+    ("ES", "ESPAÑA", "EUR"),
+    ("PE", "PERÚ", "SOL"),
+    ("LD", "LONDRES", "GBP"),
+    ("MX", "MEXICO", "MXN")
+  )
+
+  val personalInfoRDD: RDD[(String, String, Int, String)] = sc.parallelize(personalInfoSeq)
+  val pilotInfoRDD = sc.parallelize(pilotInfoSeq)
+  val salaryInfoRDD = sc.parallelize(salaryInfoSeq)
+  val dictionaryInfoRDD = sc.parallelize(dictionaryInfoSeq)
+
+  import spark.implicits._
+
+  val personalInfoDF = personalInfoRDD.toDF("Nombre", "Apellidos", "Edad", "Nacionalidad")
+  val pilotInfoDF = pilotInfoRDD.toDF("Nombre", "ID_Empleado", "Aerolinea", "Experiencia")
+  val salaryInfoDF = salaryInfoRDD.toDF("ID_Empleado", "Salario")
+  val dictionaryInfoDF = dictionaryInfoRDD.toDF("CodigoPais", "Pais", "Moneda")
+
+  /*
+    Averiguar el salario de cada piloto.
+    ¿Qué nacionalidad tienen? Muestra unicamente su nombre, apellido, identificador de piloto, el salario y la nacionalidad
+    en orden descendente de saliario.
+
+      df1.join(df2, campo por el hacer join, tipo de join)
+   */
+
+  val pilotSalary: DataFrame = pilotInfoDF
+    .join(salaryInfoDF, Seq("ID_Empleado"), "inner")
+//    .join(salaryInfoDF, "ID_Empleado")
+//    .show(false)
+
+  pilotSalary
+    .join(personalInfoDF, Seq("Nombre"))
+    .orderBy(
+      desc("salario")
+    ).select("Nombre","Apellidos", "ID_Empleado", "Salario", "Nacionalidad")
+    .show(false)
+
+  /*
+    ¿Cuántos vuelos ha hecho cada piloto?
+   */
+  val infoVueloDF = spark.read.format("csv")
+    .option("header", "true")
+    .option("delimiter", ";")
+    .load("src/main/resources/in/infoVuelo.csv")
+    .withColumn("Numero Vuelo", col("Numero Vuelo").cast("int"))
+    .withColumn("Distancia", col("Distancia").cast("int"))
+    .withColumn("Altura Maxima", col("Altura Maxima").cast("double"))
+    .withColumn("Altura Minima", col("Altura Minima").cast("double"))
+    .withColumn("Velocidad Maxima", col("Velocidad Maxima").cast("int"))
+    .withColumn("Velocidad Minima", col("Velocidad Minima").cast("int"))
+
+  infoVueloDF.show(false)
+  infoVueloDF.printSchema()
+
+  val pilotsFlyInfoDF: DataFrame = pilotSalary
+    .join(infoVueloDF, pilotSalary.col("ID_Empleado") === infoVueloDF.col("ID Piloto"))
+    .withColumn("aux", lit(1).cast("int"))
+
+  pilotsFlyInfoDF.show(false)
+
+  pilotsFlyInfoDF
+    .groupBy("ID_Empleado")
+    .agg(
+      sum("aux")
+        .alias("Vuelos realizados")
+    ).orderBy(
+    desc("Vuelos Realizados")
+  ).show(false)
+
+
+
+  /*
+    ¿Qué piloto ha recorrido mas km?
+    ¿Qué piloto ha tenido menor velocidad?
+   */
+
+  pilotsFlyInfoDF
+    .groupBy("ID_Empleado")
+    .agg(
+      avg("Distancia")
+        .alias("Distancia Total"),
+      avg("Velocidad Minima")
+        .alias("Velocidad Minima Total")
+    ).show(false)
+
+
+}
