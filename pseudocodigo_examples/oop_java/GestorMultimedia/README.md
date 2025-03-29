@@ -1,12 +1,12 @@
-![cover_readme](https://www.canva.com/design/DAGjHzebjsI/ZiZccWREkmclQi1jkPYIyw/edit)
+![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/pseudocodigo_examples/image/cover_multimediaProject.png)
 
 # Gestor de Contenido Multimedia 📺🕹️
 
-**Objetivo del proyecto**
+**🎯 Objetivo del proyecto**
 
 El proyecto "Gestor de Contenido Multimedia" tiene como propósito crear un sistema simple para registrar, gestionar y comparar contenido multimedia, específicamente series de televisión 📺 y videojuegos 🕹️. Este sistema permite a un usuario 🙋🏼 organizar su colección personal, llevar un control de qué elementos han sido prestados o utilizados, y destacar los más extensos en términos de duración (temporadas para series 📺 y horas para videojuegos 🕹️). El objetivo es ofrecer una herramienta básica pero funcional para administrar y analizar estos elementos de entretenimiento.
 
-**Reglas del negocio**
+**📐 Reglas del negocio**
 
 1. Entidades del Sistema
 
@@ -49,7 +49,7 @@ Ambas clases, <code>Serie</code> y <code>Videojuego</code>, implementan una inte
 	
 3. Aplicación Principal.
 
-La aplicación ejecutable reliza las siguientes tareas:
+La aplicación ejecutable reliza las siguientes tareas 📋:
 
 3.1 Creción de colecciones:
 
