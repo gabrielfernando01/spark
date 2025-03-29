@@ -51,6 +51,39 @@ Ambas clases, <code>Serie</code> y <code>Videojuego</code>, implementan una inte
 
 La aplicación ejecutable reliza las siguientes tareas 📋:
 
-3.1 Creción de colecciones:
+3.1 Creción de colecciones 📋:
 
 + Genera una lista de 5 series 📺 y otra de 5 videojuegos 🕹️.
++ Cada elemento se crea con datos personalizados, utilizano cualqueira de los constructores disponibles.
+
+3.2 Gestion de entrega 🛺:
+
++ Marca como "entregados" al menos 2 series 📺 y 2 videojuegos 🕹️ seleccionados por el usuario o de forma predeterminada.
+
+3.3 Análisis de estado 🧬:
+
++ Cuenta cuántas series 📺 y cuántos videojuegos 🕹️ están entregados.
++ Una vez contados, devuelve todos los elementos (cambia su estado a no entregado).
+
+3.4 Identificación de los más extensos:
+
++ Encuentra la serie con mayor número de temporadas y el videojuego con más horas estimadas.
++ Muestra una pantalla de información completa de ambos usando su representación en texto (<code>toString</code>).
+
+### 📌 Optimizaciones y Consideraciones
+
++ **Propósito claro**: El sistema simula un catálogo personal con funcionalidad de préstamo y análisis básico, útil para el usuario que quiere organizar su entretenimiento.
++ **Flexibilidad**: Los constructores permiten crear objetos con distintos niveles de detalle según las necesidades.
++ **Simplicidad**: El estado <code>delivered</code> no se modifica directamente con setters para mantener el contral a través de <code>deliver()</code> y <code>returnItem()</code>, simulando un flujo realista de préstamo/devolución.
++ **Comparación práctica**: La funcionalidad de comparación ayuda a destacar los elementos más extensos, lo que podría guiar decisiones del usuario (e.g., qué jugar o ver primero).
+
+### 🌟 Entregables
+
+El resultado final es una aplicación que:
+
+- Crea y organiza 5 series 📺 y 5 videojuegos 🕹️.
+- Simula el préstamo de alguno de ellos.
+- Reporta cuándo están prestados y los devuelve.
+- Destaca el contenido más largo de cada tipo con sus detalles.
+
+
