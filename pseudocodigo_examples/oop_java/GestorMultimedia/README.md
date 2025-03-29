@@ -1,3 +1,5 @@
+![cover_readme](https://www.canva.com/design/DAGjHzebjsI/ZiZccWREkmclQi1jkPYIyw/edit)
+
 # Gestor de Contenido Multimedia 📺🕹️
 
 **Objetivo del proyecto**
@@ -34,7 +36,7 @@ Class Serie 📺.
 	
 2. Funcionalidad Común: Interfaz Entregable.
 
-Ambas clases, <code>Serie</code> y <code>Videojuego<code>, implementan una interfaz <code>Entregable</code> que define acciones relacionadas con el estado de entrega y comparación:
+Ambas clases, <code>Serie</code> y <code>Videojuego</code>, implementan una interfaz <code>Entregable</code> que define acciones relacionadas con el estado de entrega y comparación:
 
 + <code>deliver</code>: Cambia el estado de <code>delivered</code> a verdadero (simula prestar o marcar como usado).
 + <code>returnItem()</code>: Cambia el estado de <code>delivered</code> a falso (simula devolver o marcar como disponible).
@@ -51,4 +53,4 @@ La aplicación ejecutable reliza las siguientes tareas:
 
 3.1 Creción de colecciones:
 
-+ Genera una lista de 5 series y otra de 5 videojuegos.
++ Genera una lista de 5 series 📺 y otra de 5 videojuegos 🕹️.
