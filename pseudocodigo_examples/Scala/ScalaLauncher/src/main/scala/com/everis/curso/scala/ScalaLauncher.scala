@@ -10,21 +10,21 @@ object ScalaLauncher extends App {
    */
 
   /**
-   * CONCEPTOS BÁSICOS
+   * Basics concepts
    */
 
   val z: Int = 3
-  var y: Int = 6                        // No recomendado
+  var y: Int = 6                        // Not recommended
 
   val cincoInt: Int = 5
   val cincoByte: Byte = 5
   val cincoLong: Long = 5
   val cincoShort: Short = 5
-  val cincoFloat: Float = 5.0f          // Float: precisión 7
-  val cincoDouble: Double = 5.0         // Double: precisión 15
+  val cincoFloat: Float = 5.0f          // Float: precision 7
+  val cincoDouble: Double = 5.0         // Double: precision 15
   val cincoString: String = "5"
 
-  println("Esto es la variable: " + cincoInt)
+  println("This is the variable: " + cincoInt)
 
   val formatString: String = "La temperatura máxima de hoy será de %d y la mínima de %d"
   println(String.format(formatString, 40, 27))
