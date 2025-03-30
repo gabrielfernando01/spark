@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/pseudocodigo_examples/image/cover_multimediaProject.png)
 
-# Gestor de Contenido Multimedia 📺🕹️
+# Gestor de Contenido Multimedia 📺🕹️.
 
 **🎯 Objetivo del proyecto**
 
@@ -8,11 +8,11 @@ El proyecto "Gestor de Contenido Multimedia" tiene como propósito crear un sist
 
 **📐 Reglas del negocio**
 
-1. Entidades del Sistema
+1. Entidades del Sistema.
 
-El sistema gestiona dos tipos de contenido multimedia: Series y Videojuegos.
+El sistema gestiona dos tipos de contenido multimedia: TvSeries 📺 y VideoGames 🕹️.
 
-Class Serie 📺.
+Class TvSeries 📺.
 
 - ✏️ Atributos 
 
@@ -36,7 +36,7 @@ Class Serie 📺.
 	
 2. Funcionalidad Común: Interfaz Entregable.
 
-Ambas clases, <code>Serie</code> y <code>Videojuego</code>, implementan una interfaz <code>Entregable</code> que define acciones relacionadas con el estado de entrega y comparación:
+Ambas clases, <code>Serie</code> y <code>videoGames</code>, implementan una interfaz <code>Entregable</code> que define acciones relacionadas con el estado de entrega y comparación:
 
 + <code>deliver</code>: Cambia el estado de <code>delivered</code> a verdadero (simula prestar o marcar como usado).
 + <code>returnItem()</code>: Cambia el estado de <code>delivered</code> a falso (simula devolver o marcar como disponible).
