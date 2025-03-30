@@ -1,12 +1,12 @@
 package com.everis.curso.scala
 
-object ScalaLaucher extends App {
+object ScalaLauncher extends App {
 
-  //Hola mundo
+  //Hello world
 
   /*
-    Hola mundo
-    Como estas?
+    Hello world
+    How are you?
    */
 
   /**
@@ -121,12 +121,12 @@ object ScalaLaucher extends App {
     val ageMax = people.map(_._2).max
     people.filter(x => x._2 == ageMax)(0)._1
   }
-  println("The person oldest is: " + oldestPerson(listPersona))
+  println("The person oldest is: " + oldestPerson(listPeople))
 
   /**
    * MATCH
    */
-  def whatSpendToday(dia: String): Unit = {
+  def whatSpendToday(day: String): Unit = {
     day match {
       case "Saturaday" => println("Party")
       case "Sunday" => println("Sleep")
@@ -243,7 +243,5 @@ object ScalaLaucher extends App {
   }
   println("Último elemento lista Int: " + getLastElement(listaInt))
   println("Último elemento lista Str: " + getLastElement(listaStg))
-
-
 
 }
