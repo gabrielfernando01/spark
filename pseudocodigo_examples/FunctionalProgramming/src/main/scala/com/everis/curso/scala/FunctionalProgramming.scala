@@ -132,26 +132,39 @@ object FunctionalProgramming extends App {
   println(transformed)
 
   // Second solution
+  // Function to determine the grade based on the score
+  def grade(score: Double): String = {
+    if (score < 5) {
+      "SS"
+    } else if (score < 7) {
+      "AP"
+    } else if (score < 9) {
+      "NT"
+    } else if (score < 10) {
+      "SB"
+    } else {
+      "MH"
+    }
+  }
 
+  // Function to apply the grade function to a map of subjects and scores
+  def applyGrade(scores: Map[String, Double]): Map[String, String] = {
+    scores.map { case (subject, score) =>
+      subject.toUpperCase -> grade(score)
+    }
+  }
 
-  /**
-   * Exercise 6.-
-   * Build a function that allows you to search for properties based on a given budget.
-   * The function will receive a list of properties and a price as input, and will return
-   * another list of properties whose price is less than or equal to the given price. Properties
-   * in the returned list must add a new pair to each dictionary with the property price, where
-   * the price of a property is calculated using the following formula based on the zone:
-   *
-   * Zone A: price = (meters x 1000 + rooms x 5000 + garage x 15000) x (1 - age / 100)
-   * Zone B: price = (meters x 1000 + rooms x 5000 + garage x 15000) x (1 - age / 100) x 1.5
-   *
-   * floors = [{'year': 2000, 'meters': 100, 'rooms': 3, 'garage': True, 'zone': 'A'},
-   * {'year': 2012, 'meters': 60, 'rooms': 2, 'garage': True, 'zone': 'B'},
-   * {'year': 1980, 'meters': 120, 'rooms': 4, 'garage': False, 'zone': 'A'},
-   * {'year': 2005, 'meters': 75, 'rooms': 3, 'garage': True, 'zone': 'B'},
-   * {'year': 2015, 'meters': 90, 'rooms': 2, 'garage': False, 'zone': 'A'}]
-   */
+  // Example usage
+  val dicc = applyGrade(Map(
+    "Mathematics" -> 6.5,
+    "Physics" -> 5,
+    "Chemistry" -> 3.4,
+    "Economic" -> 8.2,
+    "History" -> 9.7,
+    "Programming" -> 10
+  ))
 
-
+  // Print the result
+  println(dicc)
 
 }
