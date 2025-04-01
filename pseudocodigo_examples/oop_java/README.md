@@ -32,8 +32,8 @@ El objetivo de este ejercicio es gestionar una colección de elementos multimedi
 
 En el contexto del ejercicio, "entregados" y "devueltos" se refieren a un sistema de gestión de préstamos o entregas de elementos multimedia (series y videojuegos). Este sistema simula un escenario donde los objetos (series o videojuegos) pueden ser "prestados" (entregados) a alguien y luego "regresados" (devueltos) al sistema. Este comportamiento se implementa a través de una interfaz llamada <code>Deliverable</code>, que define los siguientes métodos:
 
-+ <code>deliver()</code>: Cambia el estado del objeto a "entregado" (es decir, indica que el objeto ha sido prestado o entregado a alguien). En términos del código, esto significa que el atributo <code>isDelivered</code> (un booleano) pasa de <code>false<code> a <code>true</code>.
-+ <code>returnItem()<code>: Cambia el estado del objeto a "no entregado" (es decir, indica que el objeto ha sido devuelto al sistema). Esto significa que el atributo <code>isDelivered</code>  pasa de <code>true<> a <code>false</code>.
++ <code>deliver()</code>: Cambia el estado del objeto a "entregado" (es decir, indica que el objeto ha sido prestado o entregado a alguien). En términos del código, esto significa que el atributo <code>isDelivered</code> (un booleano) pasa de <code>false</code> a <code>true</code>.
++ <code>returnItem()</code>: Cambia el estado del objeto a "no entregado" (es decir, indica que el objeto ha sido devuelto al sistema). Esto significa que el atributo <code>isDelivered</code>  pasa de <code>true<> a <code>false</code>.
 + <code>compareTo(Object obj)</code>: Devuelve el estado actual del atributo <code>isDelivered</code>, permitiendo verificar si el objeto está prestado (<code>true</code>) o no (<code>false</code>).
 
 Este sistema es común en aplicaciones que simulan bibliotecas, tiendas de alquiler o plataformas de préstamo, donde se necesita rastrear si un elemento está disponible o ha sido prestado.
