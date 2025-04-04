@@ -29,34 +29,69 @@ object ScalaLauncher extends App {
   val formatString: String = "La temperatura máxima de hoy será de %d y la mínima de %d"
   println(String.format(formatString, 40, 27))
 
-  val miSecuencia: Seq[String] = Seq("Hola", "que", "tal", "estas")
-  val miSecuenciaDos: Seq[Any] = Seq("Hola", "que", "tal", "estas", 67, true)
-  val miLista = List("Me", "llamo", "Pablo", 27)
+  val miSecuencia: Seq[String] = Seq("Hi", "how", "are", "you")
+  val miSecuenciaDos: Seq[Any] = Seq("Hello", "how", "are", "you", 67, true)
+  val miLista = List("My", "name", ,"is", "Pablo", 27)
 
   println(miSecuencia(0))
   println(miLista(0))
 
-  val mySeqInt: Seq[Int] = Seq(2, 4, 5, 6, 7, 2, 7, 10)
-  val mySeqInt2 = Seq(3, 6)
-  println("El tercer valor es: " + mySeqInt(2))
-  println("El máximo valor es: " + mySeqInt.max)
-  println("El último valor es: " + mySeqInt.last)
-  println(mySeqInt.contains(7))
-  println(mySeqInt.drop(3))
-  println(mySeqInt.intersect(mySeqInt2))
-  println(mySeqInt.distinct)
+  // Seq(<List>, <Vector>, <ArrayBuffer>): ordered collection of elements that may contain duplicate values.
+  val seqInt: Seq[Int] = Seq(2, 4, 5, 6, 7, 2, 7, 10)
+  val seqInt2 = Seq(3, 6)
+  println("The third value is: " + seqInt(2))
+  println("The maximum value is: " + seqInt.max)
+  println("The minimum value is:" + seqInt.min)
+  println("The first value is: " + seqInt.head)
+  println("The last values is: " + seqInt.last)
+  println("Returns all elements of the sequence except the first: " + seqInt.tail)
+  println("Returns the first n elements of the sequence: " + seqInt.take(5))
+  println(seqInt.contains(7))
+  println(seqInt.drop(3))
+  println(seqInt.intersect(seqInt2))
+  println(seqInt.distinct)
+  println(seqInt.filter( _ > 4))
+  println("Returns a new sequence sorted in ascending order: " + seqInt.sorted)
+  println("Reverses the order of the elements in the sequence: " + seqInt.reverse)
+  println("Groups the elements of the sequence according to a key function: " + seqInt.groupBy(_ % 2 == 0))
+
+  // zip: Combine two sequences into corresponding pairs
+  val seq1 = Seq(4, 1, 5)
+  val seq2 = Seq("a", "x", "z")
+  println(seq1.zip(seq2))
+
+  // flatten: Flattens a sequence of sequences into a single sequences
+  val seq3 = Seq(Seq(3, 1), Seq(8, 0))
+  println(seq3)
+  
+  // partition: Divide the sequence into two groups according to a condition.
+  val seq4 = Seq(3, 7, 2, 9, 4)
+  println(seq.partition(_ > 5)) 
+  
+  println("Checks if at least one element meets a condition: " + seq4.exists(_ > 5))
+  println("Checks if all elements meet a condition: " + seq4.forall(_ > 5))
+
+  /**
+   * Transformations: map, flatMap, collect
+   */
+  // The map function applies a transformation to each element of a collection and returns a new collection with the results.
+  val number = List(1, 2, 3, 4, 5)
+  val multiple = number.map(x => x * 7)
+  println(multiple)
+
 
   /**
    * FUNCIÓN MAP & FOREACH
    */
-  println(mySeqInt.map(x => x + 3))
-  println(mySeqInt.map(_ + 5))
+  // Applies a function to each element of the sequence and returns a new sequence with the results.
+  println(seqInt.map(x => x + 3))
+  println(seqInt.map(_ + 5))
 
-  mySeqInt.map(x => println(x))
-  mySeqInt.foreach(x => println(x))
+  seqInt.map(x => println(x))
+  seqInt.foreach(x => println(x))
 
-  println(mySeqInt.foreach(x => x + 1))
-  println(mySeqInt.foreach(_ + 8))
+  println(seqInt.foreach(x => x + 1))
+  println(seqInt.foreach(_ + 8))
 
   val personasSeq = Seq(("Alejadro", 27), ("Estephany", 25), ("Juan", 20))
 

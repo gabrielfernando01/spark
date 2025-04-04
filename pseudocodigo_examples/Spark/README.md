@@ -76,16 +76,16 @@ Se calcula la distancia total recorrida y la velocidad mínima promedio para cad
 
 El projecto esta hecho y listo para clonar usando el IDE IntelliJ IDEA, también sugiero altamente que tengas listos los siguientes recursos en tu ordenador:
 
-☕ javaJDK: openjdk 11.0.26
-🛣️ $JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
-🟥 scala version: 2.13.8
-🛣️ $SCALA_HOME: /usr/local/share/scala
-🪶 maven version: 3.8.7
-🛣️ path maven: /usr/share/maven
-🔌 sbt verison: 1.10.7
-💥 spark version: 3.5.1
-🛣️ path spark: /opt/spark
-🟧 IDE: IntelliJIDEA 24.04
++ ☕ javaJDK: openjdk 11.0.26
++ 🛣️ $JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
++ 🟥 scala version: 2.13.8
++ 🛣️ $SCALA_HOME: /usr/local/share/scala
++ 🪶 maven version: 3.8.7
++ 🛣️ path maven: /usr/share/maven
++ 🔌 sbt verison: 1.10.7
++ 💥 spark version: 3.5.1
++ 🛣️ path spark: /opt/spark
++ 🟧 IDE: IntelliJIDEA 24.04
 
 ***
 
