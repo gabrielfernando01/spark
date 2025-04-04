@@ -35,10 +35,15 @@ El proyecto comienza con una introducción a los conceptos fundamentales de Scal
 
 Las funciones de <code>Seq</code> en Scala 🟥 son extremadamente poderosas y versátiles, permitiendo realizar operaciones complejas de manera concisa. Además de las funciones mencionadas, existen muchas más disponibles en la biblioteca estándar de Scala 🟥. Algunas de las más destacadas incluyen:
 
-+ Transformaciones: <code></code>, <code></code>, <code></code>,
-+ Filtrado: <code></code>, <code></code>, <code></code>, <code></code>.
-+ Reducción: <code></code>, <code></code>, <code></code>.
-+ Operaciones de Conjunto: <code></code>, <code></code>, <code></code>, <code></code>.
++ Transformaciones: 
+	+ <code>map</code>: Transforma todos los elementos, preservando la estructura de la colección.
+	+ <code>flatMap</code>: Transforma y aplana colecciones anidadas en una sola.
+	+ <code>collect</code>: Transforma solo los elementos que coinciden con una función parcial.
++ Filtrado: <code>filter</code>, <code>filterNot</code>, <code>takeWhile</code>, <code>dropWhile</code>.
++ Reducción: <code>reduce</code>, <code>fold</code>, <code>aggregate</code>.
++ Operaciones de Conjunto: <code>union</code>, <code>diff</code>, <code>intersect</code>, <code>distinct</code>.
+
+
 
 Estas funciones hacen que trabajar con colecciones en Scala sea intuitivo y eficiente, lo que lo convierte en un lenguaje ideal para el procesamiento de datos.
 

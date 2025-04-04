@@ -79,6 +79,44 @@ object ScalaLauncher extends App {
   val multiple = number.map(x => x * 7)
   println(multiple)
 
+  // flatMap: applies a function to each element in a collection and "flattens" the results
+  val words = List("Hello", "world")
+  // Convert each word to a list of characters and flatten the results
+  val characters = words.flatMap(word => word.toList)
+  println(characters)
+
+  val lists = List(1, 2, 3)
+  // Generate a list of pairs for each number
+  val pares = lists.flatMap(n => List(n, n * 2))
+  println(pares)  // For each number n, a list List(n, n*2) is generated, and flatMap flattens them into a single list.
+
+  // collect applies a partial function (defined with case) to the elements of a collection that match the specified patterns
+  // and returns a new collection with the results.
+  val mix = List(1, "Two", 3, "Four", 5)
+  // Just process the integers and duplicate them
+  val onlyIntegers = mix.collect {
+    case n: Int => n * 2
+  }
+  print(onlyIntegers)
+
+  val numbers = List(-3, -2, 10, -5, 7)
+  // Filter and transform only positive numbers
+  val positive = numbers.collect {
+    case n if n > 0 => n * 10
+  }
+  println(positive)
+
+  /**
+   * Filtered
+   */
+  // filter retains elements in a collection that meet a given condition and discards those that do not.
+  val numeros = List(1, 2, 4, 5, 6)
+  val pares = numeros.filter(x => x % 2 == 0)
+  println(pares)
+
+  // filterNot is the opposite of filter: it retains elements that do not meet the condition.
+  val impares = numeros.filterNot(x => x % 2 == 0)
+  println(impares)
 
   /**
    * FUNCIÓN MAP & FOREACH
