@@ -2,15 +2,8 @@ package com.everis.curso.scala
 
 object ScalaLauncher extends App {
 
-  //Hello world
-
-  /*
-    Hello world
-    How are you?
-   */
-
   /**
-   * Basics concepts
+   * Variables
    */
 
   val z: Int = 3
@@ -117,6 +110,8 @@ object ScalaLauncher extends App {
   // filterNot is the opposite of filter: it retains elements that do not meet the condition.
   val impares = numeros.filterNot(x => x % 2 == 0)
   println(impares)
+
+    
 
   /**
    * FUNCIÓN MAP & FOREACH
