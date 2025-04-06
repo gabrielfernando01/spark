@@ -13,7 +13,7 @@ Las secuencias son colecciones ordenadas de elementos donde el orden de inserci�
 <code>List</code>, <code>Vector</code>, <code>ArrayBuffer</code>, <code>Range</code>.
 + Operaciones aplicables: 
 	* Transformaciones:
-		* <code>map</code>: Transforma cada elemento.
+		* <code>map</code>: Aplica una transformación a cada elemento.
 		* <code>flatMap</code>: Transforma y aplana los resultados.
 		* <code>collect</code>: Aplica una función parcial a los elementos que coinciden.
 	* Filtrado:
@@ -39,7 +39,7 @@ Los conjuntos son colecciones no ordenadas que no permiten elementos duplicados.
 <code>HashSet</code>, <code>TreeSet</code>, <code>LinkedHashSet</code>.
 + Operaciones aplicables:
 	* Transformaciones: 
-		* <code>map</code>: Transforma cada elemento.
+		* <code>map</code>: Aplica una función a cada elemento.
 		* <code>flatMap</code>: Transforma y aplana los resultados.
 	* Filtrado: 
 		* <code>filter</code>: Filtra elementos basados en una condición.
@@ -54,8 +54,8 @@ Los conjuntos son colecciones no ordenadas que no permiten elementos duplicados.
 		* <code>diff</code>: Encuentra la diferencia entre dos conjuntos.
 		* <code>subsetOf</code>: Verifica si un conjunto es subconjunto de otro.
 
-**
-		
+***		
+
 3. **Mapas** (<code>Map</code>)
 
 + Descripción: 
@@ -63,29 +63,32 @@ Los mapas son colecciones de pares clave-valor. Las claves son únicas, pero los
 + Ejemplos: 
 <code>HashMap</code>, <code>TreeMap</code>, <code>LinkedHashMap</code>.
 + Operaciones aplicables:
-	* Transformaciones: <code></code>, <code></code>.
-	* Filtrado: <code></code>, <code></code>.
-	* Reducción: <code></code>, <code></code>.
-	* Operaciones especificas: 
+	* Transformaciones: 
+		* <code>mapValues</code>: Transforma los valores manteniendo las mismas claves. 
+		* <code>map</code>: Transforma tanto claves como valores.
+		* <code>flapMap</code>: Transforma y aplana los resultados.
+	* Filtrado: 
+		* <code>filterKeys</code>: Filtra para clave-valor basados en las claves.
+		* <code>filter</code>: Filtra pares clave-valor basados en una condición.
+		* <code>exists</code>: Verifica si al menos un par clave-valor cumple una condición.
+		* <code>forall</code>. Verifica si todos los pares clave-valor cumplen una condición.
+	* Reducción: 
+		* <code>reduce</code>: Combina todos los pares clave-valor usando una operación binaria.
+		* <code>fold</code>: Combina pares clave-valor con un valor inicial.
+	* Operaciones especificas:
+		* <code>get</code>: Obtiene el valor asociado a una clave (devuelve un <code>Option</code>).
+		* <code>getOrElse</code>: Obtiene el valor asociado a una clave o un valor predeterminado.
+		* <code>keys</code>/<code>values</code>: Obtiene todas las claves o valores.
+		* <code>+</code>: Agrega un nuevo par clave-valor.
+		* <code>-</code>: Elimina una clave.
+		* <code>updated</code>: Actualiza el valor asociado a una clave.
 			
 ***
 
-4. **Iteradores**
+4. **Iteradores** <code>Iterator</code>
 
-	* Descripción: Colecciones que generan	
-		 
+* Descripción:
+Los iteradores son colecciones que permiten recorrer elementos uno a la vez. No almacenan todos los elementos en memoria, lo que los hace útiles para grandes volúmenes de datos.
 	
-## Programación Funcional sobre coleccciones.
-
-1. Transformaciones:
-
-	+ Modificar cada elemento de una colección mediante funciones como <code></code>, <code></code>, <code></code>.
-	
-2. Filtrado:
-
-	+ Seleccionar <code></code>, <code></code>, <code></code>.
-	* <code>exists</code>: Verificar si al menos un elemento cumple una condición.
-		* <code>forall</code>: Verifica si todos los elementos cumplen una condición.
-3. Reducción:
-
-	+ Combinar todos
+* Ejemplos:
+<code>Iterator(1, 2, 3)</code>, <code>List(1, 2, 3)</code>
