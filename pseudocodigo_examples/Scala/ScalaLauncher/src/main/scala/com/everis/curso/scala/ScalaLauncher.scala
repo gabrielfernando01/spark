@@ -90,7 +90,7 @@ object ScalaLauncher extends App {
   val onlyIntegers = mix.collect {
     case n: Int => n * 2
   }
-  print(onlyIntegers)
+  println(onlyIntegers)
 
   val numbers = List(-3, -2, 10, -5, 7)
   // Filter and transform only positive numbers
@@ -110,8 +110,6 @@ object ScalaLauncher extends App {
   // filterNot is the opposite of filter: it retains elements that do not meet the condition.
   val impares = numeros.filterNot(x => x % 2 == 0)
   println(impares)
-
-    
 
   /**
    * FUNCIÓN MAP & FOREACH
@@ -157,7 +155,6 @@ object ScalaLauncher extends App {
     val x = f(3)                      //> 3 + 1 = 4
     x * x                             //> 4 * 4 = 16
   } + x                               //> 19
-
 
   /**
    * Scala function definition
