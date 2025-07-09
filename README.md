@@ -213,7 +213,7 @@ Al finalizar la salida lucira la imagen con la versión que use al momento de es
 
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/image/spark_shell.png)
 
-## Probando Python 🐍 en Spark ⭐.
+## Probando Python 🐍 en Spark ⭐.	
 
 Si no quieres usar la interfaz Scala por defecto, puedes usar Python.
 

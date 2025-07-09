@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/pseudocodigo_examples/image/cover_project.png)
 
-# Projectos en Scala 🟥, Java ☕, Spark ⭐.
+# 🚀 Projectos en Scala, Java, Spark.
 
 Este repositorio contiene diversos projectos ...
 
