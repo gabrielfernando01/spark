@@ -1,12 +1,12 @@
 ![](https://raw.githubusercontent.com/gabrielfernando01/spark/master/pseudocodigo_examples/image/cover_pilotos.png)
 
-## Análisis de Datos de Pilotos ✈️ con Apache Spark 💥 en Scala 🟥.
+# ✈️ Análisis de Datos de Pilotos con Apache Spark en Scala.
 
-Este proyecto utiliza Apache Spark  en Scala  para realizar análisis sobre un conjunto de datos relacionados con pilotos, sus salarios, nacionalidades, y estadísticas de vuelo. El objetivo es demostrar cómo se pueden utilizar DataFrames y operaciones de Spark para resolver preguntas analíticas específicas.
+Este proyecto utiliza Apache Spark con Scala  para realizar análisis sobre un conjunto de datos relacionados con pilotos, sus salarios, nacionalidades, y estadísticas de vuelo. El objetivo es demostrar cómo se pueden utilizar DataFrames y operaciones de Spark para resolver preguntas analíticas específicas.
 
 ***
 
-## Descripción general del código.
+## ☀️ Descripción general del código.
 
 El código está estructurado en una aplicación Spark que realiza las siguientes tareas: 
 
@@ -33,7 +33,7 @@ Se calcula:
 
 ### Estructura del Código.
 
-1. **Configuración de Spark 💥**.
+1. **⚙️ Configuración de Spark**.
 
 Se inicializa una sesión de Spark utilizando <code>SparkSession</code> con la configuración necesaria para ejecutar el programa en modo local.
 
